@@ -1,0 +1,41 @@
+1.What are microtasks? What is a microtask queue? What is their role in Promises and how are they different from callbacks?
+
+In javascript we have event loop which contioniously monitors the call stack(this is where our javascript executed the code line by line) so the time when js encouters a callbacks(which wont be execited at that istant eg:settimeout) the js stores these thing ia seperate stack called callback queue and this will be executed only after the main js call stack has nothing to operate. Callback queue has 2 types one maintains low priority callbacks(eg: settimeout) and next one is microtaskqueue this is give then highest priority i.e it executes as soon as our js call stack is empty and the callback queue is executed. Promises are maintained insited this microtask queue.
+
+2.Explain with examples how private, protected variables can be implemented in classes and how can they be used in subclasses?
+
+Private Variable - These are accessible only inside that class also called as internal inteface
+To declare a private varaible we use #
+
+class Counter {
+  #initialValue = 10;
+  #startTimer(value) {
+    if (value < 0) return 0;
+    if (value > this.#initialValue) return this.#initialValue;
+  }
+  setCounter(value) {
+    this.#initialValue = this.#startTimer(value);
+  }
+}
+
+let count = new Counter();
+
+// can't access privates from outside of the class
+count.#startTimer(123); // Error
+count.#setCounter = 1000; // Error
+
+Protected Variables - these values cannot be changed and are declared using _
+
+class Counter {
+  _initialValue = 10;
+  startTimer(value) {
+    if (value < 0) return 0;
+    if (value > this.#initialValue) return this.#initialValue;
+  }
+  getCount {
+    return this._initialValue
+  }
+}
+
+let count = new Counter();
+count._initialValue = 100 // Error

@@ -1,0 +1,24 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+body {
+  padding-top: 20px;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.form-details {
+  margin-top: 20px;
+}
+
+.form-details > div {
+  margin: 10px;
+}
